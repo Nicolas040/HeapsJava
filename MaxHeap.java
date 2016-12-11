@@ -96,12 +96,14 @@ public class MaxHeap implements Heap {
     }
 
     @Override
-    public HeapElement getElement() throws Exception {
+    public HeapElement getElement() throws EmptyHeapException {
         try {
             return extractMax();
         } catch (Exception e) {
-            throw new Exception("Heap is empty. Error retrieving element");
+            throw new EmptyHeapException("Heap is empty. Error retrieving element");
         }
     }
 
 }
+
+

@@ -20,7 +20,7 @@ public interface Heap {
      * the highest key for max-heap
      * @throws Exception if heap is empty
      */
-    public abstract HeapElement getElement() throws Exception;
+    public abstract HeapElement getElement() throws EmptyHeapException;
     /**
      * Inserts an element in the heap. Adds it to then end and toggle it until it finds its
      * right position.

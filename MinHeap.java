@@ -72,8 +72,7 @@ public class MinHeap implements Heap {
         }
     }
 
-    public HeapElement extractMin() throws Exception {
-        if (minHeap.size() == 0) throw new Exception("Empty heap");
+    private HeapElement extractMin() {
         HeapElement result = minHeap.get(0);
         deleteElement(0);
         return result;
@@ -97,5 +96,14 @@ public class MinHeap implements Heap {
         // ... or down ?
         else if (((2*elementIndex <= minHeap.size()) && (getElementKey(elementIndex) > getElementKey(elementIndex*2))) ||
                 ((2*elementIndex < minHeap.size()) && (getElementKey(elementIndex) > getElementKey(elementIndex*2)))) toggleDown(elementIndex);
+    }
+    
+    @Override
+    public HeapElement getElement() throws Exception {
+        try {
+            return extractMin();
+        } catch (Exception e) {
+            throw new Exception("Heap is empty. Error retrieving element");
+        }
     }
 }

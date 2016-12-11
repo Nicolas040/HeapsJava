@@ -15,6 +15,13 @@ package heaps;
 public interface Heap {
     
     /**
+     * 
+     * @return the top element in the heap, the one with lowest key for min-heap or with
+     * the highest key for max-heap
+     * @throws Exception if heap is empty
+     */
+    public abstract HeapElement getElement() throws Exception;
+    /**
      * Inserts an element in the heap. Adds it to then end and toggle it until it finds its
      * right position.
      * 

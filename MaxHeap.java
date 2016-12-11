@@ -69,8 +69,7 @@ public class MaxHeap implements Heap {
         }
     }
 
-    public HeapElement extractMax() throws Exception {
-        if (maxHeap.size() == 0) throw new Exception("Empty heap");
+    private HeapElement extractMax() {
         HeapElement result = maxHeap.get(0);
         deleteElement(0);
         return result;
@@ -94,6 +93,15 @@ public class MaxHeap implements Heap {
         // ... or down ?
         else if (((2*elementIndex <= maxHeap.size()) && (getElementKey(elementIndex) < getElementKey(elementIndex*2))) ||
                 ((2*elementIndex < maxHeap.size()) && (getElementKey(elementIndex) < getElementKey(elementIndex*2)))) toggleDown(elementIndex);
+    }
+
+    @Override
+    public HeapElement getElement() throws Exception {
+        try {
+            return extractMax();
+        } catch (Exception e) {
+            throw new Exception("Heap is empty. Error retrieving element");
+        }
     }
 
 }
